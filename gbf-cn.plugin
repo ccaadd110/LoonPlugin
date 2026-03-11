@@ -6,9 +6,9 @@
 [Rule]
 
 # 游戏直连（减少战斗卡顿）
-DOMAIN-SUFFIX,granbluefantasy.jp,DIRECT
-DOMAIN-SUFFIX,mbga.jp,DIRECT
-DOMAIN-SUFFIX,cygames.jp,DIRECT
+DOMAIN-SUFFIX,granbluefantasy.jp,GBF
+DOMAIN-SUFFIX,mbga.jp,GBF
+DOMAIN-SUFFIX,cygames.jp,GBF
 
 # 汉化字典服务器
 DOMAIN-SUFFIX,huijiwiki.com,Proxy
