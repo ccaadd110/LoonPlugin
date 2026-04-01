@@ -1,5 +1,5 @@
-#!name=GBF 中文插件（Shadowrocket/通用）
-#!desc=非 Loon 优先项；Loon 请使用 gbf-hans.loon.plugin。
+#!name=GBF 中文插件（Shadowrocket/通用-调试增强）
+#!desc=调试版：宽匹配 config.js/config.json；Loon 仍优先用 gbf-hans.loon.plugin。
 #!author=cad/OpenAI Codex
 #!system=iOS
 
@@ -13,7 +13,8 @@ DOMAIN-SUFFIX,github.com,Proxy
 DOMAIN-SUFFIX,githubusercontent.com,Proxy
 
 [URL Rewrite]
+^https?://([A-Za-z0-9.-]*granbluefantasy\.jp|[A-Za-z0-9.-]*mbga\.jp|[A-Za-z0-9.-]*akamaized\.net)/.*config\.(js|json)(?:\?.*)?$ header https://cdn.jsdelivr.net/gh/biuuu/BLHXFY/game-config.js
 ^https?://(game-a3\.granbluefantasy\.jp|game\.granbluefantasy\.jp|gbf\.game-a3\.mbga\.jp|gbf\.game\.mbga\.jp|prd-game-a-gbf\.akamaized\.net)/assets(_en)?/\d+/js[^/]*/config\.js(?:\?.*)?$ header https://cdn.jsdelivr.net/gh/biuuu/BLHXFY/game-config.js
 
 [MITM]
-hostname = game-a3.granbluefantasy.jp, game.granbluefantasy.jp, gbf.game-a3.mbga.jp, gbf.game.mbga.jp, prd-game-a-gbf.akamaized.net
+hostname = *.granbluefantasy.jp, *.mbga.jp, *.akamaized.net
