@@ -1,13 +1,15 @@
 #!name=GBF 汉化（BLHXFY）
-#!desc=将 Granblue Fantasy 的 game-config.js 替换为 BLHXFY 汉化配置；请在 Loon 中开启 HTTPS 解密。
+#!desc=将 Granblue Fantasy 的 game-config.js 指向 BLHXFY 汉化配置（请开启 HTTPS 解密并确认分流未绕过相关域名）。
 #!author=OpenAI Codex
 #!homepage=https://github.com/biuuu/BLHXFY
 #!system=iOS,iPadOS
 #!tag=game,translation,granblue-fantasy
 
-[rewrite]
-# 兼容 game-a3 / gbf.game-a3 / game.granbluefantasy.jp 等入口，放宽 js 目录匹配避免版本路径变更导致失效
-^https?://(game-a3\.granbluefantasy\.jp|gbf\.game-a3\.mbga\.jp|game\.granbluefantasy\.jp)/assets(_en)?/\d+/js(?:/[^?#]*)?/config\.js(?:\?.*)?$ header https://cdn.jsdelivr.net/gh/biuuu/BLHXFY@gh-pages/blhxfy/game-config.js
+[Rewrite]
+# 兼容 jsXXXX/config.js（如 js20240301）
+^https?://(game-a3\.granbluefantasy\.jp|gbf\.game-a3\.mbga\.jp|game\.granbluefantasy\.jp)/assets(_en)?/\d+/js[^/]*/config\.js(?:\?.*)?$ header https://cdn.jsdelivr.net/gh/biuuu/BLHXFY@gh-pages/blhxfy/game-config.js
+# 兼容 js/.../config.js（部分版本会出现子目录）
+^https?://(game-a3\.granbluefantasy\.jp|gbf\.game-a3\.mbga\.jp|game\.granbluefantasy\.jp)/assets(_en)?/\d+/js(?:/[^?#]*)+/config\.js(?:\?.*)?$ header https://cdn.jsdelivr.net/gh/biuuu/BLHXFY@gh-pages/blhxfy/game-config.js
 
-[mitm]
+[MitM]
 hostname = game-a3.granbluefantasy.jp, gbf.game-a3.mbga.jp, game.granbluefantasy.jp

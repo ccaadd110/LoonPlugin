@@ -12,10 +12,13 @@ DOMAIN-SUFFIX,cygames.jp,GBF
 # 汉化资源拉取
 DOMAIN-SUFFIX,cdn.jsdelivr.net,Proxy
 DOMAIN-SUFFIX,github.com,Proxy
+DOMAIN-SUFFIX,githubusercontent.com,Proxy
 
 [Rewrite]
-# 覆盖游戏配置到 BLHXFY 汉化配置
-^https?://(game-a3\.granbluefantasy\.jp|gbf\.game-a3\.mbga\.jp|game\.granbluefantasy\.jp)/assets(_en)?/\d+/js(?:/[^?#]*)?/config\.js(?:\?.*)?$ header https://cdn.jsdelivr.net/gh/biuuu/BLHXFY@gh-pages/blhxfy/game-config.js
+# 兼容 jsXXXX/config.js（如 js20240301）
+^https?://(game-a3\.granbluefantasy\.jp|gbf\.game-a3\.mbga\.jp|game\.granbluefantasy\.jp)/assets(_en)?/\d+/js[^/]*/config\.js(?:\?.*)?$ header https://cdn.jsdelivr.net/gh/biuuu/BLHXFY@gh-pages/blhxfy/game-config.js
+# 兼容 js/.../config.js（部分版本会出现子目录）
+^https?://(game-a3\.granbluefantasy\.jp|gbf\.game-a3\.mbga\.jp|game\.granbluefantasy\.jp)/assets(_en)?/\d+/js(?:/[^?#]*)+/config\.js(?:\?.*)?$ header https://cdn.jsdelivr.net/gh/biuuu/BLHXFY@gh-pages/blhxfy/game-config.js
 
-[MITM]
+[MitM]
 hostname = game-a3.granbluefantasy.jp, gbf.game-a3.mbga.jp, game.granbluefantasy.jp
