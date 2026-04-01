@@ -1,0 +1,12 @@
+#!name=GBF Translation
+#!desc=Rewrite Granblue Fantasy config.js to the BLHXFY translation config. Enable HTTPS decryption in Loon if the game uses HTTPS.
+#!author=OpenAI Codex
+#!homepage=https://github.com/biuuu/BLHXFY
+#!system=iOS,iPadOS
+#!tag=game,translation,granblue-fantasy
+
+[rewrite]
+^https?://(game-a3\.granbluefantasy\.jp|gbf\.game-a3\.mbga\.jp)/assets(_en)?/\d+/js[^/]*/config\.js$ header https://cdn.jsdelivr.net/gh/biuuu/BLHXFY@gh-pages/blhxfy/game-config.js
+
+[mitm]
+hostname = game-a3.granbluefantasy.jp, gbf.game-a3.mbga.jp
