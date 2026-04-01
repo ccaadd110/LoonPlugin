@@ -1,12 +1,13 @@
 #!name=GBF 汉化（Loon 专用）
-#!desc=Loon 使用这个：将 game-config.js 替换为 BLHXFY 汉化配置。
+#!desc=Loon 使用这个：将 game-config.js 替换为 BLHXFY 汉化配置（已覆盖 gbf.game.mbga.jp / akamaized 新入口）。
 #!author=OpenAI Codex
 #!homepage=https://github.com/biuuu/BLHXFY
 #!system=iOS,iPadOS
 #!tag=game,translation,granblue-fantasy,loon
 
 [Rewrite]
-^https?://(game-a3\.granbluefantasy\.jp|gbf\.game-a3\.mbga\.jp|game\.granbluefantasy\.jp)/assets(_en)?/\d+/js[^/]*/config\.js(?:\?.*)?$ header https://cdn.jsdelivr.net/gh/biuuu/BLHXFY/game-config.js
+# 兼容当前日志出现的 gbf.game.mbga.jp 与 prd-game-a-gbf.akamaized.net
+^https?://(game-a3\.granbluefantasy\.jp|game\.granbluefantasy\.jp|gbf\.game-a3\.mbga\.jp|gbf\.game\.mbga\.jp|prd-game-a-gbf\.akamaized\.net)/assets(_en)?/\d+/js[^/]*/config\.js(?:\?.*)?$ header https://cdn.jsdelivr.net/gh/biuuu/BLHXFY/game-config.js
 
 [MITM]
-hostname = game-a3.granbluefantasy.jp, gbf.game-a3.mbga.jp, game.granbluefantasy.jp
+hostname = game-a3.granbluefantasy.jp, game.granbluefantasy.jp, gbf.game-a3.mbga.jp, gbf.game.mbga.jp, prd-game-a-gbf.akamaized.net

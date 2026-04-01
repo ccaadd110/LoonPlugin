@@ -7,12 +7,13 @@
 DOMAIN-SUFFIX,granbluefantasy.jp,GBF
 DOMAIN-SUFFIX,mbga.jp,GBF
 DOMAIN-SUFFIX,cygames.jp,GBF
+DOMAIN-SUFFIX,akamaized.net,GBF
 DOMAIN-SUFFIX,cdn.jsdelivr.net,Proxy
 DOMAIN-SUFFIX,github.com,Proxy
 DOMAIN-SUFFIX,githubusercontent.com,Proxy
 
 [URL Rewrite]
-^https?://(game-a3\.granbluefantasy\.jp|gbf\.game-a3\.mbga\.jp|game\.granbluefantasy\.jp)/assets(_en)?/\d+/js[^/]*/config\.js(?:\?.*)?$ header https://cdn.jsdelivr.net/gh/biuuu/BLHXFY/game-config.js
+^https?://(game-a3\.granbluefantasy\.jp|game\.granbluefantasy\.jp|gbf\.game-a3\.mbga\.jp|gbf\.game\.mbga\.jp|prd-game-a-gbf\.akamaized\.net)/assets(_en)?/\d+/js[^/]*/config\.js(?:\?.*)?$ header https://cdn.jsdelivr.net/gh/biuuu/BLHXFY/game-config.js
 
 [MITM]
-hostname = game-a3.granbluefantasy.jp, gbf.game-a3.mbga.jp, game.granbluefantasy.jp
+hostname = game-a3.granbluefantasy.jp, game.granbluefantasy.jp, gbf.game-a3.mbga.jp, gbf.game.mbga.jp, prd-game-a-gbf.akamaized.net
