@@ -1,16 +1,11 @@
-#!name=GBF 汉化（BLHXFY）
-#!desc=优先使用与小火箭一致的 header 重写方式替换 game-config.js；若仍不生效请关闭相关 bypass 并清理游戏缓存。
+#!name=GBF 汉化（Loon 专用）
+#!desc=Loon 使用这个：将 game-config.js 替换为 BLHXFY 汉化配置。
 #!author=OpenAI Codex
 #!homepage=https://github.com/biuuu/BLHXFY
 #!system=iOS,iPadOS
-#!tag=game,translation,granblue-fantasy
-
-[URL Rewrite]
-# 与你给的小火箭规则一致：使用 header 替换，避免 302 可能导致的脚本校验/缓存问题
-^https?://(game-a3\.granbluefantasy\.jp|gbf\.game-a3\.mbga\.jp|game\.granbluefantasy\.jp)/assets(_en)?/\d+/js[^/]*/config\.js(?:\?.*)?$ header https://cdn.jsdelivr.net/gh/biuuu/BLHXFY/game-config.js
+#!tag=game,translation,granblue-fantasy,loon
 
 [Rewrite]
-# Loon 兼容段：同一条规则再放一份，避免不同版本仅识别 Rewrite 段
 ^https?://(game-a3\.granbluefantasy\.jp|gbf\.game-a3\.mbga\.jp|game\.granbluefantasy\.jp)/assets(_en)?/\d+/js[^/]*/config\.js(?:\?.*)?$ header https://cdn.jsdelivr.net/gh/biuuu/BLHXFY/game-config.js
 
 [MITM]

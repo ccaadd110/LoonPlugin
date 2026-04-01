@@ -1,25 +1,17 @@
-#!name=GBF 中文插件
-#!desc=Granblue Fantasy 汉化 + 分流优化（BLHXFY）
+#!name=GBF 中文插件（Shadowrocket/通用）
+#!desc=非 Loon 优先项；Loon 请使用 gbf-hans.loon.plugin。
 #!author=cad/OpenAI Codex
 #!system=iOS
 
 [Rule]
-# 游戏直连（减少战斗卡顿）
 DOMAIN-SUFFIX,granbluefantasy.jp,GBF
 DOMAIN-SUFFIX,mbga.jp,GBF
 DOMAIN-SUFFIX,cygames.jp,GBF
-
-# 汉化资源拉取
 DOMAIN-SUFFIX,cdn.jsdelivr.net,Proxy
 DOMAIN-SUFFIX,github.com,Proxy
 DOMAIN-SUFFIX,githubusercontent.com,Proxy
 
 [URL Rewrite]
-# 与小火箭规则一致：header 替换 game-config.js
-^https?://(game-a3\.granbluefantasy\.jp|gbf\.game-a3\.mbga\.jp|game\.granbluefantasy\.jp)/assets(_en)?/\d+/js[^/]*/config\.js(?:\?.*)?$ header https://cdn.jsdelivr.net/gh/biuuu/BLHXFY/game-config.js
-
-[Rewrite]
-# Loon 兼容段
 ^https?://(game-a3\.granbluefantasy\.jp|gbf\.game-a3\.mbga\.jp|game\.granbluefantasy\.jp)/assets(_en)?/\d+/js[^/]*/config\.js(?:\?.*)?$ header https://cdn.jsdelivr.net/gh/biuuu/BLHXFY/game-config.js
 
 [MITM]
