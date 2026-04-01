@@ -1,27 +1,21 @@
 #!name=GBF 中文插件
-#!desc=Granblue Fantasy 汉化 + 分流优化
-#!author=cad
-#!system=ios
+#!desc=Granblue Fantasy 汉化 + 分流优化（BLHXFY）
+#!author=cad/OpenAI Codex
+#!system=iOS
 
 [Rule]
-
 # 游戏直连（减少战斗卡顿）
 DOMAIN-SUFFIX,granbluefantasy.jp,GBF
 DOMAIN-SUFFIX,mbga.jp,GBF
 DOMAIN-SUFFIX,cygames.jp,GBF
 
-# 汉化字典服务器
-DOMAIN-SUFFIX,huijiwiki.com,Proxy
-DOMAIN-SUFFIX,githubusercontent.com,Proxy
-
+# 汉化资源拉取
+DOMAIN-SUFFIX,cdn.jsdelivr.net,Proxy
+DOMAIN-SUFFIX,github.com,Proxy
 
 [Rewrite]
+# 覆盖游戏配置到 BLHXFY 汉化配置
+^https?://(game-a3\.granbluefantasy\.jp|gbf\.game-a3\.mbga\.jp|game\.granbluefantasy\.jp)/assets(_en)?/\d+/js(?:/[^?#]*)?/config\.js(?:\?.*)?$ header https://cdn.jsdelivr.net/gh/biuuu/BLHXFY@gh-pages/blhxfy/game-config.js
 
-# 拦截游戏文本
-^https:\/\/game\.granbluefantasy\.jp\/assets\/.* url script-response-body gbf_translate.js
-^https:\/\/game\.granbluefantasy\.jp\/.*\.json url script-response-body gbf_translate.js
-
-
-[Script]
-
-GBF-Translate = type=http-response,pattern=^https:\/\/game\.granbluefantasy\.jp\/.*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/example/gbf-translate/main/gbf_translate.js
+[MITM]
+hostname = game-a3.granbluefantasy.jp, gbf.game-a3.mbga.jp, game.granbluefantasy.jp
