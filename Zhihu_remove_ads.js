@@ -113,8 +113,6 @@ if (url.includes("/answers/v2/") || url.includes("/articles/v2/")) {
       (i) =>
         !(
           i?.adjson ||
-          i?.biz_type_list?.includes("article") ||
-          i?.biz_type_list?.includes("content") ||
           i?.business_type?.includes("paid") ||
           i?.section_info ||
           i?.tips ||
