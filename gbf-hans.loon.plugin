@@ -1,12 +1,15 @@
-#!name=GBF Translation
-#!desc=Rewrite Granblue Fantasy config.js to the BLHXFY translation config. Enable HTTPS decryption in Loon if the game uses HTTPS.
+#!name=GBF 汉化（Loon 专用-调试增强）
+#!desc=调试版：尽可能宽匹配 config.js/config.json，先确保 Rewrite/MITM 命中。
 #!author=OpenAI Codex
 #!homepage=https://github.com/biuuu/BLHXFY
 #!system=iOS,iPadOS
-#!tag=game,translation,granblue-fantasy
+#!tag=game,translation,granblue-fantasy,loon,debug
 
-[rewrite]
-^https?://(game-a3\.granbluefantasy\.jp|gbf\.game-a3\.mbga\.jp)/assets(_en)?/\d+/js[^/]*/config\.js$ header https://cdn.jsdelivr.net/gh/biuuu/BLHXFY@gh-pages/blhxfy/game-config.js
+[Rewrite]
+# 调试增强：宽匹配 GBF 相关域名下的 config.js/config.json
+^https?://([A-Za-z0-9.-]*granbluefantasy\.jp|[A-Za-z0-9.-]*mbga\.jp|[A-Za-z0-9.-]*akamaized\.net)/.*config\.(js|json)(?:\?.*)?$ header https://cdn.jsdelivr.net/gh/biuuu/BLHXFY/game-config.js
+# 保留精确规则（命中后会优先生效）
+^https?://(game-a3\.granbluefantasy\.jp|game\.granbluefantasy\.jp|gbf\.game-a3\.mbga\.jp|gbf\.game\.mbga\.jp|prd-game-a-gbf\.akamaized\.net)/assets(_en)?/\d+/js[^/]*/config\.js(?:\?.*)?$ header https://cdn.jsdelivr.net/gh/biuuu/BLHXFY/game-config.js
 
-[mitm]
-hostname = game-a3.granbluefantasy.jp, gbf.game-a3.mbga.jp
+[MITM]
+hostname = *.granbluefantasy.jp, *.mbga.jp, *.akamaized.net
